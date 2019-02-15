@@ -4,7 +4,9 @@ import br.com.lucasmarciano.koinproject.data.DataRepository
 import br.com.lucasmarciano.koinproject.data.DataRepositoryFactory
 import br.com.lucasmarciano.koinproject.data.LocalDataRepository
 import br.com.lucasmarciano.koinproject.data.RemoteDataRepository
+import br.com.lucasmarciano.koinproject.presentation.CurrencyViewModel
 import com.google.gson.Gson
+import org.koin.android.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 
 /**
@@ -23,4 +25,7 @@ val applicationModule = module {
     factory<DataRepository>("remote") { RemoteDataRepository() }
 
     factory { DataRepositoryFactory(get("local"), get("remote")) }
+
+    viewModel { CurrencyViewModel(get()) }
+
 }

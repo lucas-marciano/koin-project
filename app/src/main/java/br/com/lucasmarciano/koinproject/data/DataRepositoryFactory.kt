@@ -13,11 +13,11 @@ class DataRepositoryFactory(
 ) {
 
     fun retrieveRemoteSource(): DataRepository {
-        return localDataSource
+        return remoteDataSource
     }
 
     fun retrieveLocalSource(): DataRepository {
-        return remoteDataSource
+        return localDataSource
 
     }
 }
