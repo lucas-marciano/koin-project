@@ -10,7 +10,7 @@ import com.google.gson.Gson
  * @create_at 14/02/19
  * @author lucasmarciano
  */
-open class DataRepositoryImpl(private val gson: Gson) : DataRepository{
+open class LocalDataRepository(private val gson: Gson) : DataRepository{
 
     override fun getCurrencies(jsonString: String): List<Currency> {
         return gson.fromJson(jsonString, Array<Currency>::class.java).toList()

@@ -1,7 +1,9 @@
 package br.com.lucasmarciano.koinproject
 
 import br.com.lucasmarciano.koinproject.data.DataRepository
-import br.com.lucasmarciano.koinproject.data.DataRepositoryImpl
+import br.com.lucasmarciano.koinproject.data.DataRepositoryFactory
+import br.com.lucasmarciano.koinproject.data.LocalDataRepository
+import br.com.lucasmarciano.koinproject.data.RemoteDataRepository
 import com.google.gson.Gson
 import org.koin.dsl.module.module
 
@@ -16,5 +18,9 @@ import org.koin.dsl.module.module
 val applicationModule = module {
     single { Gson() }
     factory { CurrencyAdapter() }
-    factory { DataRepositoryImpl(get()) as DataRepository}
+
+    factory<DataRepository>("local") { LocalDataRepository(get()) }
+    factory<DataRepository>("remote") { RemoteDataRepository() }
+
+    factory { DataRepositoryFactory(get("local"), get("remote")) }
 }
