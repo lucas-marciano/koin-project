@@ -1,7 +1,9 @@
 package br.com.lucasmarciano.koinproject
 
 import android.app.Application
+import br.com.lucasmarciano.koinproject.utils.KoinLogger
 import org.koin.android.ext.android.startKoin
+import timber.log.Timber
 
 /**
  * Main class application of the app.
@@ -13,6 +15,9 @@ import org.koin.android.ext.android.startKoin
 class MainApplication: Application() {
     override fun onCreate() {
         super.onCreate()
-        startKoin(this, listOf(applicationModule))
+        if(BuildConfig.DEBUG)
+            Timber.plant(Timber.DebugTree())
+
+        startKoin(this, listOf(applicationModule), loadProperties = true, logger = KoinLogger())
     }
 }

@@ -12,13 +12,14 @@ import br.com.lucasmarciano.koinproject.model.Currency
  * @create_at 15/02/19
  * @author lucasmarciano
  */
-class CurrencyViewModel(private val dataRepositoryFactory: DataRepositoryFactory) : ViewModel() {
+class CurrencyViewModel(private val dataRepositoryFactory: DataRepositoryFactory,
+                        private val  json: String) : ViewModel() {
 
     private val currencyLiveData = MutableLiveData<List<Currency>>()
 
     fun observerCurrencies() = currencyLiveData
 
-    fun retrieveCurrencies(json: String){
+    fun retrieveCurrencies(){
         val data = dataRepositoryFactory.retrieveLocalSource().getCurrencies(json)
         currencyLiveData.postValue(data)
     }

@@ -21,13 +21,13 @@ import org.koin.dsl.module.module
 
 val applicationModule = module {
     single { Gson() }
-    single { UrlHelper() }
+    single { UrlHelper(getProperty("currency_base_url")) }
 
     scope("browse") { CurrencyAdapter() }
     factory<DataRepository>("local") { LocalDataRepository(get()) }
     factory<DataRepository>("remote") { RemoteDataRepository() }
     factory { DataRepositoryFactory(get("local"), get("remote")) }
 
-    viewModel { CurrencyViewModel(get()) }
+    viewModel { (json: String) -> CurrencyViewModel(get(), json) }
 
 }
