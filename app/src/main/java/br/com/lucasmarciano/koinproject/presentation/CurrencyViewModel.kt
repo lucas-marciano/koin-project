@@ -6,7 +6,7 @@ import br.com.lucasmarciano.koinproject.data.DataRepositoryFactory
 import br.com.lucasmarciano.koinproject.model.Currency
 
 /**
- * [Description]
+ * View model of the MainActivity
  *
  * @project KoinProject
  * @create_at 15/02/19

@@ -4,7 +4,7 @@ import android.app.Application
 import org.koin.android.ext.android.startKoin
 
 /**
- * [Description]
+ * Main class application of the app.
  *
  * @project KoinProject
  * @create_at 14/02/19

@@ -1,14 +1,14 @@
-package br.com.lucasmarciano.koinproject
+package br.com.lucasmarciano.koinproject.presentation
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import br.com.lucasmarciano.koinproject.R
 import br.com.lucasmarciano.koinproject.model.Currency
 
 /**
- * [Description]
+ * Adapter of the list of the Currencies.
  *
  * @project KoinProject
  * @create_at 14/02/19
@@ -26,17 +26,11 @@ class CurrencyAdapter: RecyclerView.Adapter<CurrencyAdapter.ViewHolder>() {
     override fun getItemCount() = currencies.size
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        viewHolder.bindView(currencies[position])
+        viewHolder.currencyView.setCurrency(currencies[position])
     }
 
 
     inner class ViewHolder(view: View): RecyclerView.ViewHolder(view){
-        private val nameCurrency = view.findViewById<TextView>(R.id.tv_name)
-        private val symbolCurrency = view.findViewById<TextView>(R.id.tv_symbol)
-
-        fun bindView(currency: Currency) {
-            nameCurrency.text = currency.name
-            symbolCurrency.text = currency.symbol
-        }
+        val currencyView: CurrencyView = view.findViewById(R.id.view_currency)
     }
 }
