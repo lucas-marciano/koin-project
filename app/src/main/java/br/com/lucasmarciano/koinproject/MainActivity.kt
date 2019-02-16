@@ -14,7 +14,6 @@ import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 class MainActivity : AppCompatActivity() {
-
     private val currencyAdapter: CurrencyAdapter by inject()
     private val viewModel: CurrencyViewModel by viewModel {
         val currenciesJson = resources.openRawResource(R.raw.currencies).bufferedReader().use {
